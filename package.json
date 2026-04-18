@@ -1,6 +1,7 @@
 {
   "name": "cicd-app",
   "version": "1.0.0",
+  "description": "Simple Node.js app for Jenkins CI/CD pipeline",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
