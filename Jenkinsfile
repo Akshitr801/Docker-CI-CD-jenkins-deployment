@@ -2,8 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'akshitr801/ci-cd:latest'
-        EC2_HOST = '3.21.163.11'
+        DOCKER_IMAGE = 'akshitr801/cicd-app:latest'
     }
 
     stages {
@@ -37,18 +36,14 @@ pipeline {
             }
         }
 
-        stage('Deploy to EC2') {
+        stage('Deploy') {
             steps {
-                sshagent(['ec2-key']) {
-                    sh '''
-                    ssh -o StrictHostKeyChecking=no ubuntu@$EC2_HOST << EOF
-                      docker pull $DOCKER_IMAGE
-                      docker stop app || true
-                      docker rm app || true
-                      docker run -d -p 3000:3000 --name app $DOCKER_IMAGE
-                    EOF
-                    '''
-                }
+                sh '''
+                    docker pull $DOCKER_IMAGE
+                    docker stop app || true
+                    docker rm app || true
+                    docker run -d -p 3000:3000 --name app $DOCKER_IMAGE
+                '''
             }
         }
     }
