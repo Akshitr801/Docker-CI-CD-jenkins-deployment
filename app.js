@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-  res.send('CI/CD Level 2 Working 🚀');
+  res.send('CI/CD pipeline is working');
 });
 
-app.listen(3000, () => console.log('Running on port 3000'));
+app.listen(3000, () => {
+  console.log('App running on port 3000');
+});
