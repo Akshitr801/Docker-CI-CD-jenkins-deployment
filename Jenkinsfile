@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'akshitr801/cicd-app:latest'
+        DOCKER_IMAGE = 'akshitr801/ci-cd:latest'
         EC2_HOST = '3.21.163.11'
     }
 
